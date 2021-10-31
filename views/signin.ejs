@@ -1,0 +1,36 @@
+<%- include('shared/header')%>
+    <div class="container my-5 p-5">
+        <form action="/signin" method="POST">
+            <div class="form-group">
+                <input value="<%=oldInputs.email%>" name="email" required placeholder="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            </div>
+            <% if (wrongUser) { %>
+                <div class="alert alert-danger my-2">
+                    wrongUser
+                </div>
+                <% } %>
+                    <% if (validationError.find(ele=>ele.param == 'email')) { %>
+                        <div class="alert alert-danger my-2">
+                            validation error on email
+                        </div>
+                        <% } %>
+                            <div class="form-group">
+                                <input value="<%=oldInputs.password%>" name="password" required placeholder="password" type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <% if (wrongPassword) { %>
+                                <div class="alert alert-danger my-2">
+                                    wrongPassword
+                                </div>
+                                <% } %>
+                                    <% if (validationError.find(ele=>ele.param == 'password')) { %>
+                                        <div class="alert alert-danger my-2">
+                                            validation error on Password
+                                        </div>
+                                        <% } %>
+                                            <button type="submit" class="btn btn-primary">login</button>
+        </form>
+    </div>
+
+
+
+    <%- include("shared/footer") %>
